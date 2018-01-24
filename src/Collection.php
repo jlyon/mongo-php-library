@@ -938,6 +938,26 @@ class Collection
         return $operation->execute($server);
     }
 
+    /**
+     * Updates at most one document matching the filter.
+     *
+     * @see UpdateOne::__construct() for supported options
+     * @see http://docs.mongodb.org/manual/reference/command/update/
+     * @param array|object $filter  Query by which to filter documents
+     * @param array|object $update  Update to apply to the matched document
+     * @param array        $options Command options
+     * @return UpdateResult
+     * @throws UnsupportedException if options are not supported by the selected server
+     * @throws InvalidArgumentException for parameter/option parsing errors
+     * @throws DriverRuntimeException for other driver errors (e.g. connection errors)
+     */
+    public function update($filter, $update, array $options = [])
+    {
+
+        return $this->updateOne($filter, $update, $options);
+    }
+
+
     /*
      * ChangeStream outline
      *
